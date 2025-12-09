@@ -3,10 +3,12 @@
 #include <string.h>
 #include <ctype.h> 
 
-#define MAX_STACK_SIZE 100
-int stack[MAX_STACK_SIZE];
-int top = -1;
+#define MAX_STACK_SIZE 100  
+int stack[MAX_STACK_SIZE]; // The stack can hold up to 100 integers
+int top = -1; // the stack is initially empty
 
+
+// At first checks if the stack is full,and pushes a new integer onto the top of the stack
 void push(int value) {
     if (top >= MAX_STACK_SIZE - 1) {
         printf("Stack overflow!\n");
@@ -14,7 +16,7 @@ void push(int value) {
     }
     stack[++top] = value;
 }
-
+//This checks if the stack is empty,and then returns and removes the top value from the stack
 int pop() {
     if (top < 0) {
         printf("Stack underflow!\n");
