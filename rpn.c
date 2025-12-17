@@ -27,16 +27,16 @@ int pop() {
 
 int main() {
     char input[256];
-    char *token;
+    char *token; //Pointer to store each part (number or operator) of the input.
     int operand1, operand2, result;
 
-    printf("Enter RPN expression (e.g., 3 4 + 2 *): ");
-    fgets(input, sizeof(input), stdin);
+    printf("Enter RPN expression (e.g., 3 4 + 2 *): "); //input from user
+    fgets(input, sizeof(input), stdin);  //Helps us read user's input
 
-    token = strtok(input, " \n"); 
+    token = strtok(input, " \n"); //plits the input string into tokens separated by space ' ' or newline '\n'
     while (token != NULL) {
-        if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1]))) { 
-            push(atoi(token));
+        if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1]))) { //is it number(positive and negative)
+            push(atoi(token)); //Converts string to integer.
         } else { 
             operand2 = pop();
             operand1 = pop();
@@ -64,7 +64,7 @@ int main() {
             }
             push(result);
         }
-        token = strtok(NULL, " \n");
+        token = strtok(NULL, " \n"); // move to next token,until all tokens are processed.
     }
 
     if (top == 0) { 
